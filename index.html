@@ -32,14 +32,21 @@
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
         <h3>
-<a name="asteroidsjs" class="anchor" href="#asteroidsjs"><span class="octicon octicon-link"></span></a>Asteroids</h3>
-
-<p>By: Frank Kotsianas</p>
-
-<p>Browser-based version of the classic arcade game. Implements speed, direction, and movement controls via the keyboard. Additional features include a random asteroid generator, screen wrapping, and modularity via namespacing. </p>
-<p>Try to level up and check out the easter eggs!</p>
-
-<p>Custom background via: <a href='wonderfulengineering.com'>wonderfulengineering.com</a>.</p>
+          <a name="asteroidsjs" class="anchor" href="#asteroidsjs"><span class="octicon octicon-link"></span></a>Asteroids</h3>
+          <p>By: Frank Kotsianas</p>
+          <p>Browser-based version of the classic arcade game. Implements speed, direction, and movement controls via the keyboard. Additional features include a random asteroid generator, screen wrapping, and modularity via namespacing. </p>
+          <p>Try to level up and check out the easter eggs!</p>
+      </section>
+      <section id='game' class='inner'>
+        <canvas width="1440" height="600"></canvas>
+        <script>
+            var canvas = document.getElementsByTagName("canvas")[0];
+            var ctx = canvas.getContext('2d');
+            ctx.fillStyle = '#FFFFFF';
+            ctx.font = '20px Helvetica-Neue';
+        
+            var g = new Asteroids.Game(ctx).start();
+        </script>
       </section>
     </div>
 
@@ -47,6 +54,7 @@
     <div id="footer_wrap" class="outer">
       <footer class="inner">
         <p class="copyright">Asteroids maintained by <a href="https://github.com/fkotsian">fkotsian</a></p>
+        <p>Custom background via:<a href='wonderfulengineering.com'> wonderfulengineering.com</a>.</p>
         <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
       </footer>
     </div>
