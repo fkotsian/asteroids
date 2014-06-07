@@ -7,7 +7,8 @@
     <meta name="description" content="Asteroids : Browser-based Asteroids game w/ mouse/keyboard interface." />
 
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-    
+
+    <script src='javascripts/jquery-1.11.1.min.js'></script>
     <script src="moving_object.js"></script>
     <script src="asteroid.js"></script>
     <script src="game.js"></script>
@@ -22,53 +23,56 @@
 
     <!-- HEADER -->
     <div id="header_wrap" class="outer">
-        <header class="inner">
+      <header class="inner">
+        <h1 id="project_title" class='orbitron'>Asteroids.js</h1>
+        <div id='hideables'>
           <a id="forkme_banner" href="https://github.com/fkotsian/asteroids">View on GitHub</a>
-
-          <h1 id="project_title">Asteroids.js</h1>
-          <h2 id="project_tagline">Browser-based Asteroids game w/ mouse/keyboard interface.</h2>
-
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/fkotsian/asteroids/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/fkotsian/asteroids/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
+        
+          <section id="downloads">
+            <a class="zip_download_link" href="https://github.com/fkotsian/asteroids/zipball/master">Download this project as a .zip file</a>
+            <a class="tar_download_link" href="https://github.com/fkotsian/asteroids/tarball/master">Download this project as a tar.gz file</a>
+          </section>
+          
+          <p id="project_tagline" class='orbitron start-button'>Click to start</p>
+        </div>
+        <div id='controls' class='hidden orbitron'>
+          <p>CONTROLS:</p>
+          <p>W/S: Thrust<br>A/D: Rotate<br>Space: Fire!</p>
+        </div>
+        <div id='alerts' class='hidden orbitron'>
+        </div>
+        
+      </header>
     </div>
 
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
-        <h3>
-          <a name="asteroidsjs" class="anchor" href="#asteroidsjs"><span class="octicon octicon-link"></span></a>Asteroids</h3>
-          <p>By: Frank Kotsianas</p>
-          <p>Browser-based version of the classic arcade game. Implements speed, direction, and movement controls via the keyboard. Additional features include a random asteroid generator, screen wrapping, and modularity via namespacing. </p>
-          <p>Try to level up and check out the easter eggs!</p>
       </section>
-      <section id='game' class='inner'>
-        <div class='game-space'>
-          <canvas width="1440" height="600"></canvas>
-          <script>
-              var canvas = document.getElementsByTagName("canvas")[0];
-              var ctx = canvas.getContext('2d');
-              ctx.fillStyle = '#FFFFFF';
-              ctx.font = '20px Helvetica-Neue';
-        
-              var g = new Asteroids.Game(ctx).start();
-          </script>
+      
+      <section id='game' class='hidden'>
+        <div id='game-space'>
+          <canvas width="1080" height="675"></canvas>
         </div>
       </section>
     </div>
 
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">Asteroids maintained by <a href="https://github.com/fkotsian">fkotsian</a></p>
-        <p>Custom background via:<a href='wonderfulengineering.com'> wonderfulengineering.com</a>.</p>
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
-      </footer>
-    </div>
-
-    
-
   </body>
 </html>
+
+<script type='text/javascript'>
+function startGame(event) {
+    $('#game').toggleClass('hidden');
+    $('#hideables').toggleClass('hidden');
+    $('#controls').toggleClass('hidden')
+
+    var canvas = document.getElementsByTagName("canvas")[0];
+    ctx = canvas.getContext('2d');
+    ctx.fillStyle = '#FFFFFF';
+    ctx.font = '20px Helvetica-Neue';
+
+    var g = new Asteroids.Game(ctx).start();
+  }
+
+  $('.start-button').click(startGame);
+</script>
